@@ -7,16 +7,6 @@ const fs = require('fs');
 
 let server = null;
 
-let port = 63341;
-// const dirname = vscode.workspace.workspaceFolder[0].uri.path;
-const dirname = path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath);
-const packageP = path.resolve(dirname, 'package.json');
-if (fs.existsSync(packageP)) {
-	const a = JSON.parse(fs.readFileSync(packageP).toString());
-	port = a.localmockserverport || port;
-}
-
-
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
 
@@ -24,6 +14,15 @@ if (fs.existsSync(packageP)) {
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+
+	let port = 63341;
+	// const dirname = vscode.workspace.workspaceFolder[0].uri.path;
+	const dirname = path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath);
+	const packageP = path.resolve(dirname, 'package.json');
+	if (fs.existsSync(packageP)) {
+		const a = JSON.parse(fs.readFileSync(packageP).toString());
+		port = a.localmockserverport || port;
+	}
 
 	// Use the console to output diagnostic information (console.log) and errors (console.error)
 	// This line of code will only be executed once when your extension is activated
@@ -38,7 +37,7 @@ function activate(context) {
 		// vscode.window.showInformationMessage(dirname);
 		// vscode.window.showInformationMessage(vscode.workspace.rootPath);
 		// vscode.window.showInformationMessage(vscode.workspace.workspaceFolders[0].uri.path);
-		vscode.window.showInformationMessage(path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath),''+port)
+		vscode.window.showInformationMessage(path.resolve(vscode.workspace.workspaceFolders[0].uri.fsPath), '' + port)
 	});
 	server = http.createServer((request, response) => {
 		response.setHeader('Access-Control-Allow-Origin', '*');
