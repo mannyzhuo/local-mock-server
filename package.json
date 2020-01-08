@@ -1,6 +1,6 @@
 {
 	"name": "localmockserver",
-	"publisher":"xxxxxxxxxx",
+	"publisher":"yr",
 	"displayName": "localmockserver",
 	"description": "",
 	"version": "0.0.1",
@@ -35,5 +35,6 @@
 		"mocha": "^6.2.2",
 		"typescript": "^3.6.4",
 		"vscode-test": "^1.2.2"
-	}
+	},
+	"repository":"git@github.com:mannyzhuo/local-mock-server.git"
 }

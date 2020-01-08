@@ -56,10 +56,6 @@ function activate(context) {
 
 	server.listen(port);
 	context.subscriptions.push(disposable);
-	setTimeout(()=>{
-
-
-	},2000);
 }
 exports.activate = activate;
 
